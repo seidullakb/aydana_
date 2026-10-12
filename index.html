@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAPTER 20</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div id="trail-container"></div>
+    <div id="custom-cursor"></div>
+ 
+    <div class="bg-decorations">
+    <div class="icon i1"></div>
+    <div class="icon i2"></div>
+    <div class="icon i3"></div>
+    <div class="icon i4"></div> </div>
+ 
+    <audio id="bg-music"></audio>
+    <audio id="click-sfx" src="click.mp3" preload="auto"></audio>
+    <audio id="buzzer-sfx" src="buzzer.mp3" preload="auto"></audio>
+    <audio id="win-sfx" src="win.mp3" preload="auto"></audio>
+    <audio id="confetti-sfx" src="confetti.mp3" preload="auto"></audio>
+ 
+    <div class="control-center-wrapper">
+        <!-- Floating shortcut button that reveals on hover -->
+        <button id="control-center-trigger" class="cc-trigger-btn">🎵</button>
+ 
+        <!-- Your updated music player structure -->
+        <div id="vinyl-player-container" class="hidden-player">
+            <!-- Close button inside the player -->
+            <button id="close-cc-btn" class="cc-close-btn">×</button>
+ 
+            <div class="vinyl-wrapper">
+                <div id="vinyl-record"> 
+                    <img src="her-photo.jpg" id="vinyl-photo">
+                </div>
+                <div id="vinyl-stylus"></div>
+            </div>
+ 
+            <div class="vinyl-info">
+                <span id="current-track">Track: None</span>
+                <div class="vinyl-controls">
+                    <button onclick="prevTrack()">⏮</button>
+                    <button id="play-pause" onclick="togglePlay()">⏵</button>
+                    <button onclick="nextTrack()">⏭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+ 
+    <div id="login-box">
+    <h2 id="special-title">Enter the Special Date</h2>
+    <span id="date-format">DD/MM/YYYY</span>
+    
+    <div class="input-wrapper">
+    <input type="text" id="date-input" maxlength="8" readonly style="background-color: transparent;">
+    </div>
+ 
+        <div class="numpad">
+            <button onclick="appendNum(1)" ontouchstart="appendNum(1); event.preventDefault();">1</button>
+            <button onclick="appendNum(2)" ontouchstart="appendNum(2); event.preventDefault();">2</button>
+            <button onclick="appendNum(3)" ontouchstart="appendNum(3); event.preventDefault();">3</button>
+            <button onclick="appendNum(4)" ontouchstart="appendNum(4); event.preventDefault();">4</button>
+            <button onclick="appendNum(5)" ontouchstart="appendNum(5); event.preventDefault();">5</button>
+            <button onclick="appendNum(6)" ontouchstart="appendNum(6); event.preventDefault();">6</button>
+            <button onclick="appendNum(7)" ontouchstart="appendNum(7); event.preventDefault();">7</button>
+            <button onclick="appendNum(8)" ontouchstart="appendNum(8); event.preventDefault();">8</button>
+            <button onclick="appendNum(9)" ontouchstart="appendNum(9); event.preventDefault();">9</button>
+            <div style="visibility: hidden;"></div> 
+            <button onclick="appendNum(0)" ontouchstart="appendNum(0); event.preventDefault();">0</button>
+            <button onclick="backspace()" ontouchstart="backspace(); event.preventDefault();">←</button>
+        </div>
+
+        <button id="unlock-btn" onclick="checkDate()" ontouchstart="checkDate(); event.preventDefault();">UNLOCK CHAPTER 20</button>
+
+        
+   <div id="glitch-overlay" class="hidden">
+    <div class="error-card">
+        <div class="error-icon">✕</div>
+        <h2>Access Denied</h2>
+        <p>The magic date doesn't match our records. Please try again, Legend.</p>
+        <button class="retry-btn" onclick="closeGlitch()">RETRY</button>
+    </div>
+</div>
+ 
+    </div> <!-- end #login-box -->
+
+    <div id="secret-content" style="display: none;">
+ 
+<section class="chapter" id="chap2">
+    <div class="header-container">
+        <h1 class="glitch-text">BIRTHDAY GIRL</h1>
+        <p class="status-tag">STATUS: LEVEL 20 UNLOCKED</p>
+    </div>
+ 
+    <div class="polaroid-wrapper">
+        <div class="polaroid-grid">
+            <!-- ================= НАБОР 1: ВСЕ 19 КАРТИНОК ================= -->
+            <div class="polaroid"><img src="photo1.jpg"></div>
+            <div class="polaroid"><img src="photo2.jpg"></div>
+            <div class="polaroid"><img src="photo3.jpg"></div>
+            <div class="polaroid"><img src="photo4.jpg"></div>
+            <div class="polaroid"><img src="photo5.jpg"></div>
+            <div class="polaroid"><img src="photo6.jpg"></div>
+            <div class="polaroid"><img src="photo7.jpg"></div>
+            <div class="polaroid"><img src="photo8.jpg"></div>
+            <div class="polaroid"><img src="photo9.jpg"></div>
+            <div class="polaroid"><img src="photo10.jpg"></div>
+            <div class="polaroid"><img src="photo11.jpg"></div>
+            <div class="polaroid"><img src="photo12.jpg"></div>
+            <div class="polaroid"><img src="photo13.jpg"></div>
+            <div class="polaroid"><img src="photo14.jpg"></div>
+            <div class="polaroid"><img src="photo15.jpg"></div>
+            <div class="polaroid"><img src="photo16.jpg"></div>
+            <div class="polaroid"><img src="photo17.jpg"></div>
+            <div class="polaroid"><img src="photo18.jpg"></div>
+            <div class="polaroid"><img src="photo19.jpg"></div>
+ 
+            <!-- ================= НАБОР 2: ТОЧНАЯ КОПИЯ ДЛЯ БЕСШОВНОСТИ ================= -->
+            <div class="polaroid"><img src="photo1.jpg"></div>
+            <div class="polaroid"><img src="photo2.jpg"></div>
+            <div class="polaroid"><img src="photo3.jpg"></div>
+            <div class="polaroid"><img src="photo4.jpg"></div>
+            <div class="polaroid"><img src="photo5.jpg"></div>
+            <div class="polaroid"><img src="photo6.jpg"></div>
+            <div class="polaroid"><img src="photo7.jpg"></div>
+            <div class="polaroid"><img src="photo8.jpg"></div>
+            <div class="polaroid"><img src="photo9.jpg"></div>
+            <div class="polaroid"><img src="photo10.jpg"></div>
+            <div class="polaroid"><img src="photo11.jpg"></div>
+            <div class="polaroid"><img src="photo12.jpg"></div>
+            <div class="polaroid"><img src="photo13.jpg"></div>
+            <div class="polaroid"><img src="photo14.jpg"></div>
+            <div class="polaroid"><img src="photo15.jpg"></div>
+            <div class="polaroid"><img src="photo16.jpg"></div>
+            <div class="polaroid"><img src="photo17.jpg"></div>
+            <div class="polaroid"><img src="photo18.jpg"></div>
+            <div class="polaroid"><img src="photo19.jpg"></div>
+        </div>
+    </div>
+ 
+ 
+    <button class="next-btn" onclick="nextChap(3)">THE VERIFICATION</button>
+</section>
+ 
+        <section class="chapter" id="chap3">
+            <h2 class="section-subtitle">БИРИНШИ СОЙЛЕСКЕН КЕЗ</h2>
+ 
+            <div class="comic-viewport">
+                <div class="comic-strip" id="comic-strip">
+ 
+                    <!-- PANEL 01 — THE QUEST FOR FIRE -->
+                    <div class="panel panel-01">
+                        <div class="panel-num">1</div>
+                        <div class="panel-art">
+                            <div class="group-ask">
+                                Бізге спичка керек!<br>Кім Қазына әпкеден сұрап келеді? 🤔
+                            </div>
+                            <div class="p01-layout">
+                                <div class="girls-grid">
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                </div>
+                                <div class="cake-block">
+                                    <span style="font-size:28px">🎂</span>
+                                    <div class="cake-warning">⚠ ЖАНБАДЫ...</div>
+                                </div>
+                            </div>
+                            <div class="speech-bubble hero-me">Мен барамын!🙋🏼‍♀️</div>
+                            <div class="stick-figure blonde" style="position:absolute;bottom:calc(var(--caption-h) + 22px);right:28px;">
+                                <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                            </div>
+                        </div>
+                        <div class="panel-caption">АСЫЛАЙДЫҢ ТУҒАН КҮНІ, 04.10.2023</div>
+                    </div>
+ 
+                    <!-- PANEL 02 — CLOSED DOORS -->
+                    <div class="panel panel-02">
+                        <div class="panel-num">2</div>
+                        <div class="panel-art">
+                            <div class="door-frame"></div>
+                            <div class="door-block"></div>
+                            <div class="stick-figure brunette p02-authority-fig">
+                                <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                            </div>
+                            <div class="speech-bubble authority">Басқа тәрбиешілерден сұраңдар!</div>
+                            <div class="stick-figure blonde p02-blonde-fig">
+                                <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                            </div>
+                        </div>
+                        <div class="panel-caption">КАЗЫНА АПКЕ АШУЛЫ</div>
+                    </div>
+ 
+                    <!-- PANEL 03 — AN UNEXPECTED ALLY -->
+                    <div class="panel panel-03">
+                        <div class="panel-num">3</div>
+                        <div class="panel-art">
+                            <div class="hallway"></div>
+                            <div class="stick-figure blonde running p03-blonde-fig">
+                                <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                            </div>
+                            <div class="stick-figure brunette p03-brunette-fig">
+                                <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                            </div>
+                            <div class="speech-bubble hero-me" style="left:28%;transform:none;max-width:55%;">Айдана әпке, спичка бар ма?</div>
+                        </div>
+                        <div class="panel-caption">АЙДАНА АПКЕ ПАЙДА БОЛДЫ</div>
+                    </div>
+ 
+                    <!-- PANEL 04 — THE DEAL -->
+                    <div class="panel panel-04">
+                        <div class="panel-num">4</div>
+                        <div class="panel-art">
+                            <div class="p04-split"><div class="p04-left"></div><div class="p04-right"></div></div>
+                            <div class="matchbox">📦</div>
+                            <div class="hand-left"></div>
+                            <div class="hand-right"></div>
+                            <div class="stick-figure brunette reaching" style="position:absolute;bottom:calc(var(--caption-h)+20px);left:10%;">
+                                <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                            </div>
+                            <div class="stick-figure blonde reaching" style="position:absolute;bottom:calc(var(--caption-h)+20px);right:10%;transform:scaleX(-1);">
+                                <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                            </div>
+                            <div class="speech-bubble hero-me" style="bottom:calc(var(--caption-h) + 10px);right:8px;left:auto;transform:none;max-width:50%;">Рахмет! Келіңіз, пицца береміз сізге!</div>
+                        </div>
+                        <div class="panel-caption">СПИШКА</div>
+                    </div>
+ 
+                    <!-- PANEL 05 — CELEBRATION -->
+                    <div class="panel panel-05">
+                        <div class="panel-num">5</div>
+                        <div class="panel-art">
+                            <div class="p05-layout">
+                                <div class="shout-bubble">УРААА! ✨🍕</div>
+                                <div class="bg-crowd">
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                    <div class="girl-dot"><div class="mini-head"></div><div class="mini-body"></div><div class="mini-arm-l"></div><div class="mini-arm-r"></div><div class="mini-leg-l"></div><div class="mini-leg-r"></div></div>
+                                </div>
+                                <div class="bg-cake"><span class="candle-flame">🕯️</span>🎂</div>
+                                <div class="pizza-slice">🍕</div>
+                                <div class="stick-figure blonde p05-blonde-fig">
+                                    <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                                </div>
+                                <div class="stick-figure brunette p05-brunette-fig">
+                                    <div class="head"></div><div class="body"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-caption">УРААА! ✨🍕</div>
+                    </div>
+ 
+                </div>
+            </div>
+ 
+            <div class="comic-nav">
+                <span class="panel-counter" id="panel-counter">1 / 5</span>
+                <div class="comic-controls">
+                    <button class="control-btn" onclick="scrollComic(-1)">← PREV</button>
+                    <button class="control-btn rewind" onclick="rewindComic()">↺ REWIND</button>
+                    <button class="control-btn" onclick="scrollComic(1)">NEXT →</button>
+                </div>
+            </div>
+ 
+            <button class="next-btn continue-story" id="comic-continue-btn"
+                style="display:none; margin-top:20px;"
+                onclick="nextChap(4)">CONTINUE →</button>
+        </section>
+ 
+ 
+<!-- ================= PAGE 4: THE 20 THINGS CARDS ENGINE ================= -->
+<section class="chapter" id="chap4">
+    <div class="header-container">
+        <h1 class="glitch-text">THE 20 THINGS</h1>
+        <p class="status-tag">CARDS FLIPPED: <span id="card-counter">0</span>/20</p>
+    </div>
+ 
+      <div id="cards-deck-container"></div>
+    <button id="finale-trigger-btn" class="next-btn" style="display: none;" onclick="nextChap(5)">THE VERIFICATION</button>
+</section>
+ 
+        <section class="chapter" id="chap5">
+    <div class="header-container" style="margin-bottom: 20px;">
+        <h1 class="glitch-text">YOUR GIFT</h1>
+        <p class="status-tag" id="gift-status">CLICK 20 TIMES TO UNWRAP</p>
+    </div>
+ 
+    <div class="gift-container">
+        <div class="gift-scene">
+            <div class="gift-box" id="giftBox">
+                <div class="gift-lid" id="giftLid">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="bow">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-inside"></div> 
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                </div>
+            </div>
+        </div>
+<div class="gift-message" id="giftMessage">
+                <img src="photo20.jpg" alt="Birthday Photo">
+                <h2>Happy Birthday!</h2>
+                <p>Thank you for becoming one of the most beautiful parts of my life.</p>
+                <button class="next-btn" style="margin-top: 20px;" onclick="nextChap(8)">CONTINUE →</button>
+            </div>
+ 
+            <div class="gift-text" id="giftText">Click the box</div>
+        </div>
+    </section>
+ 
+  <!-- ================= PAGE 8: THE PHOTO MOSAIC ENVELOPE ================= -->
+<section class="chapter" id="chap8">
+ 
+    <div class="header-container">
+        <h1 class="glitch-text">ONE LAST THING</h1>
+        <p class="status-tag">
+            PIECES ALIGNED: <span id="puzzle-counter">0</span> / 16
+        </p>
+    </div>
+ 
+    <div id="puzzle-arena">
+        <!-- PUZZLE BOARD -->
+        <div id="puzzle-board"></div>
+    </div>
+ 
+    <!-- ENVELOPE (appears after puzzle complete) -->
+    <div id="final-envelope-wrapper">
+        <div id="envelope-outer">
+            <div id="envelope-flap"></div>
+            <div id="envelope-body">
+                <div id="envelope-seal">✦</div>
+            </div>
+        </div>
+        <p id="envelope-hint">tap to open</p>
+    </div>
+ 
+    <!-- LETTER (appears after envelope tap) -->
+    <div id="letter-wrapper">
+        <div id="letter-paper">
+            <span class="letter-deco">✦ ✦ ✦</span>
+            <p id="letter-body">
+                Туған күніңмен, Айдана кыз! 🎉<br><br>
+                Сен менің өмірімдегі ең күшті адамсың.<br>
+                Осы уақытқа дейін істеген қамқорлығыңа,<br>
+                өтпей қалған приколдарга күлгеніне рахмет!<br><br>
+                Қанша бұзық болса да, бәрібір<br>
+                ең сигма краш апкесің.<br><br>
+                Всегда осылай күліп, факюларыңды<br>
+                көрсетіп жүре бер! 🥹✨
+            </p>
+            <span class="letter-deco">✦ ✦ ✦</span>
+            <button class="next-btn" id="letter-next-btn"
+                style="display:none; margin-top:28px;"
+                onclick="nextChap(9)">FINISH →</button>
+        </div>
+    </div>
+ 
+</section>
+    </div>
+ 
+    <script src="script.js"></script>
+ 
+    <script>
+  const grid = document.querySelector('.polaroid-grid');
+  
+  function scroll() {
+    // If the grid has scrolled past the first 19 images, reset to 0
+    if (grid.scrollLeft >= grid.scrollWidth / 2) {
+      grid.scrollLeft = 0;
+    } else {
+      grid.scrollLeft += 1; // Increase this number to make it scroll faster
+    }
+  }
+ 
+  // Runs the scroll function every 16 milliseconds (~60 frames per second)
+  setInterval(scroll, 16);
+</script>
+ 
+</body>
+</html>
